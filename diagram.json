@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "author": "Muhamad Akbar Muzakynur",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -10.2, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -255.2,
+      "left": -208.98,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -316.5,
+      "left": 61.8,
+      "attrs": { "temperature": "53.6", "humidity": "60" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -51.2,
+      "left": 370.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -151.2,
+      "left": 270.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "pir1:VCC", "dht1:VCC", "red", [ "v96", "h336" ] ],
+    [ "dht1:GND", "uno:GND.1", "black", [ "v144" ] ],
+    [ "dht1:VCC", "lcd1:VCC", "red", [ "v0" ] ],
+    [ "lcd1:SDA", "uno:A4", "green", [ "h-96", "v211.4", "h-42.6" ] ],
+    [ "uno:A5", "lcd1:SCL", "green", [ "v-0.1", "h42.7", "v-230.4" ] ],
+    [ "dht1:SDA", "uno:12", "green", [ "v153.6", "h38" ] ],
+    [ "pir1:OUT", "uno:4", "green", [ "v134.4", "h355.06" ] ],
+    [ "pir1:GND", "dht1:GND", "black", [ "v48", "h249.34" ] ],
+    [ "bz1:2", "uno:8", "red", [ "v48", "h-144.4" ] ],
+    [ "bz1:1", "uno:GND.3", "black", [ "v288", "h-134.4" ] ]
+  ],
+  "dependencies": {}
+}
